@@ -1,0 +1,1 @@
+﻿window.addEventListener('shake', shakeEventDidOccur, false);

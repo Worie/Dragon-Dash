@@ -1,0 +1,1059 @@
+﻿<!DOCTYPE HTML>
+<head>
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="apple-touch-icon" href="imgs/DragonBall.png"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="Shortcut icon" href="imgs/DragonBall.png" />
+<title>Dragon Dash</title>	
+<!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />-->
+<!--<script src="phonegap.js"></script>-->
+
+
+
+<link href="js/plugins/noUiSlider/jquery.nouislider.css" rel="stylesheet">
+
+<style id="temporrr">
+.rotationBall {
+background-image:url('imgs/DragonBall.png');
+width: 100px;
+height:100px;
+}
+
+
+.leader {
+border-top:1px solid orange;
+margin-bottom: 1px;
+width:95%;
+height:40px;
+overflow:hidden;
+float:left;
+line-height:40px;
+
+}
+
+.avatar {
+width: 40px;
+height: 40px;
+border-radius:20px;
+}
+.details {
+display:none;
+
+width:95%;
+transform: rotateY(0deg);
+font-size:10px;
+}
+.loading {
+text-align:center;
+font-size:50px;color:white;
+}
+
+@font-face { font-family: DragonBall; src: url('css/font.ttf'); } 
+
+#handler {
+display:inline-block;
+height:100%;
+width:100%;
+position:relative;
+background-image:url('imgs/background-black.png');
+border-radius:10px;
+-webkit-box-shadow: 0px 0px 50px green;
+-moz-box-shadow: 0px 0px 50px green;
+box-shadow: 0px 0px 50px green;
+
+overflow:hidden;
+}
+
+div#handler.saiyajin {
+border-radius:10px;
+-webkit-box-shadow: 0px 0px 10px orange;
+-moz-box-shadow: 0px 0px 10px orange;
+box-shadow: 0px 0px 10px orange;
+
+}
+
+.tile.saiyajin {
+opacity : 0.7;
+
+}
+#container {
+
+
+margin: 0 auto;
+display:inline-block;
+padding:0;
+width:280px;
+height:380px;
+overflow:hidden;
+position:relative;
+color:white;
+
+}
+
+#top_bar {
+
+margin: 0 auto;
+width:280px;
+height:40px;
+padding:0;
+color:white;
+font-size:25px;
+background-image: url('http://api.ning.com/files/P77fcSItzBySMVYuwgiLXDVXnvZKQVviyLIVC0tkFo1-VatIIxGpGeURKdNY38SekNU5NUBRO0RNLjgNazc6bYCh67GA9gNz/PackRendersByDead_Rites479.png');
+background-size:130px 50px;
+background-repeat:no-repeat;
+background-position:center;
+position:relative;
+overflow:hidden;
+}
+
+#info {
+float:right;
+color:white;
+}
+
+body {
+margin: 0;
+position:relative;
+display:none;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+background:#663300;
+/*background-image:url('http://i1.ytimg.com/vi/NfSTq8WWpno/maxresdefault.jpg');
+background-size:cover;*/
+
+background-image:url('imgs/background.jpg');
+background-size:cover;
+ padding:0;
+font-family: DragonBall;
+overflow:hidden;
+ text-shadow:
+    3px 3px 0 #000,
+    /* Simulated effect for Firefox and Opera
+       and nice enhancement for WebKit */
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;
+}
+
+
+ 
+.tile {
+position:absolute;
+background-size:cover;
+transform: rotateY(0deg);
+
+}
+.sensu {
+background-image:url('imgs/sensu.gif');	
+}
+	
+.tile:hover{
+cursor:pointer;
+}
+
+.freezer {
+background-image:url('imgs/freezer.png');
+}
+
+.freezer.bw {
+background-image:url('imgs/freezer_bw.png');
+}
+
+.cell {
+background-image:url('imgs/cell.png');	
+}
+
+.cell.bw {
+	background-image:url('imgs/cell.png');		
+}
+
+.c17 {
+background-image:url('imgs/c17.png');
+}
+
+.c17.bw {
+background-image:url('imgs/c17_bw.png');
+}
+
+.nappa {
+background-image:url('imgs/nappa.png');
+	}
+	
+.nappa.bw {
+	background-image:url('imgs/nappa_bw.png');
+	
+	}
+.c18 {
+background-image:url('imgs/c18.png');
+}
+
+.c18.bw {
+background-image:url('imgs/c18_bw.png');
+}
+
+.dodorio{
+background-image:url('imgs/dodorio.png');
+}
+
+.white {
+background-image:url('imgs/white.png');
+}
+.dodorio.bw{
+background-image:url('imgs/dodorio_bw.png');
+}
+
+.red {
+background-image:url('imgs/red.png');
+}
+
+.green {
+background-image:url('imgs/red.png');
+}
+
+.orange {
+background-image:url('imgs/orange.png');
+}
+
+.blue {
+background-image:url('imgs/blue.png');
+}
+
+.pink {
+background-image:url('imgs/pink.png');
+}
+
+.yellow {
+background-image:url('imgs/yellow.png');
+}
+
+.progress {
+position:relative;
+margin:0 auto;
+height:40px;
+background-color: grey;
+border-radius: 5px;
+background-image: linear-gradient(to bottom, grey 60%, #999999);
+
+
+
+}
+
+.progress.bar{
+height:100%;
+float:left;
+background: blue;
+background-image: linear-gradient(to bottom, #0BA2FA 50%, blue);
+
+}
+
+.progress.bar.saiyajin {
+background: orange;
+}
+
+
+#ki_val {
+position:absolute;
+top:0;
+left:0;
+width:100%;
+text-align:center;
+z-index:1;
+
+border-style: solid; 
+border-width: 8px 13px 10px 15px; 
+-moz-border-image: url(imgs/ki.gif) 8 13 10 15 stretch; 
+-webkit-border-image: url(ki.gif) 8 13 10 15 stretch; -o-border-image: url(imgs/ki.gif) 8 13 10 15 stretch; 
+border-image: url(imgs/ki.gif) 8 13 10 15 stretch;
+}
+
+#music_control{
+float:left;
+margin-left:10px;
+margin-top:10px;
+width:25px;
+height:25px;
+border:none;
+background-size:cover;
+background:none;
+padding:0;
+}
+
+#refresh_tiles {
+display:none;
+margin-left:10px;
+margin-top:10px;
+float:left;
+width:25px;
+height:25px;
+border:none;
+background-size:cover;
+background:none;
+padding:0;
+background-image:url('imgs/refresh.png');
+}
+
+#logout {
+display:none;
+margin-left:10px;
+margin-top:10px;
+float:right;
+width:25px;
+height:25px;
+border:none;
+background-size:cover;
+background:none;
+padding:0;
+background-image:url('imgs/logout.png');
+}
+
+
+#music_control.on {
+background-image:url('imgs/s_on.png');
+}
+
+#music_control.off {
+background-image:url('imgs/s_off.png');
+}
+
+#ki_info {
+position:absolute;
+top:0;
+right:0;
+width:100%;
+text-align:center;
+z-index:1;
+font-size:30px;
+height: 100%;
+line-height: 100%;
+}
+#init_game {
+
+}
+
+.gameButton {
+outline: 0px;
+background:green;
+/*background-image:url('');*/
+box-shadow: 0px 0px 15px orange;
+opacity:0.8;
+width:200px;
+height:40px;
+font-size:25px;
+border:1px solid orange;
+margin:0 auto;
+margin-top:5px;
+border-radius:20px;
+}
+
+.gameButton.inactive {
+	background:#003300;
+	box-shadow: 0px 0px 15px silver;
+	border:1px solid silver;
+	color:silver;
+	
+}
+
+
+.transparent {
+opacity:0.8;
+}
+
+.gameButton:hover{
+cursor:pointer;}
+#ki_bar {
+display:none;
+}
+
+
+.martop {
+margin-top:10px;
+}
+.topbutton {
+margin-right:10px;
+margin-top:10px;
+background:none;
+background-size:cover;
+float:right;
+padding:0;
+width:25px;
+height:25px;
+border:none;
+}
+#pause_btn {
+margin-right:10px;
+margin-top:10px;
+background:none;
+background-image:url('imgs/pause.png');
+background-size:cover;
+float:right;
+padding:0;
+width:25px;
+height:25px;
+border:none;
+}
+#arg {
+color:orange;
+font-size:30px;
+}
+
+#ki_bar {
+top:340px;
+}
+
+.screen {
+
+padding:0;
+overflow:hidden;
+position:absolute;
+color:white;
+font-size:25px;
+display:none;
+top:0;
+left:0;
+
+}
+
+#start_screen {
+
+}
+
+#game_pause {
+opacity:0.8;
+background:black;
+z-index:2;
+}
+
+.slider {
+float:right;
+display:inline-block;
+position:relative;
+background:black;
+width:30px;
+height:15px;
+border-radius:15px;
+box-shadow: 0px 0px 15px orange;
+}
+.slider>img {
+width:15px;
+position:absolute;
+left:0px;
+background-image: url('imgs/DragonBall.png');
+background-size:cover;
+}
+
+.slider.on>img {
+left:0px;
+}
+
+.slider.on {
+background:green;
+}
+
+.slider.disabled {
+background:grey;
+}
+
+.slider.disabled>img {
+background-image: url('imgs/DragonBall_mono.png');
+}
+
+input {
+background:green;
+outline:1px solid orange;
+color:white;
+font-family:DragonBall;
+font-size:25px;
+width:70%;
+text-align:center;
+}
+
+#sign_in {
+text-align:center;
+}
+
+#ki_left {
+/*border-image: url('imgs/ki.gif');*/
+
+}
+
+#preload {
+display:none;
+}
+
+.achievement {
+border-top:1px solid orange;
+margin-bottom: 1px;
+width:95%;
+height:40px;
+overflow:hidden;
+float:left;
+line-height:40px;
+
+}
+
+.achIco {
+background-image: url('imgs/locked.png');
+background-size:cover;
+width: 40px;
+height: 40px;
+float:left;
+border-radius:20px;
+margin-top:10px;
+margin-left:10px;
+}
+
+.achInfo{
+display:block;
+display:none;
+width:95%;
+transform: rotateY(0deg);
+
+}
+
+.difficultyRadio {
+width:50px;
+height:50px;
+background-size:cover;
+}
+
+.difficultyRadio.on {
+background-image:url('imgs/DragonBall.png');
+}
+
+.difficultyRadio.on.disabled {
+background-image:url('imgs/DragonBall_mono.png');
+}
+
+
+.achievementBar {
+opacity: 0.9;
+position: absolute;
+font-size: 10px;
+line-height: 10px;
+top: 0px;
+padding: 0;
+display:none;
+background:green;
+z-index:1;
+width:100%;
+height:100%;
+transform:rotateY(0deg);
+}
+
+.informations {
+opacity:0.7;
+border:1px solid orange;
+border-radius:15px;
+background:green;
+/*background-image:url('imgs/background-yellow.png');*/
+width:90%;
+height:70%;
+display:inline-block;
+/*overflow-y:scroll;
+overflow-x:hidden;*/
+overflow:hidden;
+box-shadow: 0px 0px 15px orange;
+margin-top:10px;
+
+}
+
+.scrollable{
+width:110%;
+height:100%;
+overflow-y:scroll;
+}
+
+.margin {
+margin-top:10px;
+margin-bottom:10px;
+}
+
+
+#screen-characters div.character {
+	display:inline-block;	
+	width:0px;
+	height:0px;
+	padding:0;
+	margin-left:5px;
+	margin-top:5px;
+	background-size:cover;
+	
+}
+
+#screen-characters div.character.picked {
+	
+}
+#screen-characters > div:first-child {
+	height:40%;
+	width:100%;
+	padding:0;
+} 
+
+#screen-characters > div:first-child > div {
+	position: relative;
+	display:inline-block;
+	width:50%;
+	height:100%;
+	padding:0;
+	float:left;
+}
+
+
+#screen-characters > div:first-child > div > img {
+	display:block;
+	height:80%;
+	margin:0 auto;
+}
+
+#screen-character > div:first-child > div:nth-child(2) {
+	text-align:justify;
+}
+</style>
+
+
+</head>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<body>
+	<div id='handler'>
+		
+		<div id='top_bar'>
+			<div class="achievementBar"></div>
+						<button id='music_control' class="on topbutton" ></button>
+						<button id='refresh_tiles' class='topbutton'></button>
+						<img id='settings_icon' onClick="showScreen('settings');" src='imgs/settings.png' class='topbutton'/>
+						<button id='logout' class='topbutton'></button>
+		</div>
+		<div id='container'>
+		
+			<div id="game_window" class='screen'>
+					<div class="progress" id='ki_bar'>
+					<span id="ki_info"></span>
+					<div id='ki_left' style="width:100%;" class="progress bar"></div>
+				</div>
+			</div>
+			
+			<div id='start_screen' class='screen'>
+			
+
+	
+
+				<div id='login' class='gameButton martop' data-href='sign_in'>Sign in</div>
+				<div class='gameButton martop' data-href='play'>Play</div>
+<!--		<div id='init_game' class='gameButton martop' data-href='start_offline'>Singleplayer</div>
+				<div id='multiplayer' class='gameButton martop'>Versus</div>-->
+				<!--<div id='about_game' style='background:#4F804F;'class='gameButton martop'data-href='more'>More games</div>-->
+				<div id="lead_href" class='gameButton martop' onclick='showScreen("leaderboards");' data-href='leaderboards'>Leaderboards</div>
+				<div id='achievements_menu' class='gameButton martop' data-href='achievements'>Achievements</div>
+
+				<div class='gameButton inactive martop' data-href='about'>About</div>
+				
+				<!--<div id='credits_game' class='gameButton martop' data-href='credits'>Credits</div>-->
+				<!--<div data-href='settings' class='gameButton martop'>Settings</div>-->
+
+				
+			</div>
+			<!--> //////////////////////////////////////////////////////SETTINGS///////////<-->
+			<div id="settings" class='screen'>
+			<div style='display:inline-block;width:80%;'>
+			
+			
+			<div class="margin">
+			Display animations
+			<div class='slider on' data-val='animations'><img src="imgs/none.png"/></div>
+			</div>
+			
+			
+			<div>Sounds menagment</div>
+			<div class="margin">
+			Buttons
+			<div class='slider on' data-val='sounds buttons'><img src="imgs/none.png"/></div>
+			</div>
+			<div class="margin">
+			Tiles
+			<div class='slider on' data-val='sounds tiles'><img src="imgs/none.png"/></div>
+			</div>
+			<div class="margin">
+			Shuffle
+			<div class='slider on' data-val='sounds shuffle'><img src="imgs/none.png"/></div>
+			</div>
+			
+			<div class="margin">
+			Bonus
+			<div class='slider on' data-val='sounds bonus'><img src="imgs/none.png"/></div>
+			</div>
+			
+			<div class="margin" id='clicker_slider'>
+			Auto clicker
+			<div class='slider' data-val='auto_clicker'><img src="imgs/none.png"/></div>
+			</div>
+			
+			</div>
+			
+				<!---Difficulty-->
+			<div style='text-align:center;'>
+			
+			<div style='display:inline-block;' data-val='1'>
+			<img class="difficultyRadio" src='imgs/none.png' /><br/>
+			<span>Human</span>
+			
+			</div>
+			
+			<div style='display:inline-block;' data-val='2'>
+			<img class="difficultyRadio on" src='imgs/none.png' /><br/>
+			<span>Saiyajin</span>
+			
+			</div>
+			
+			<div style='display:inline-block;' data-val='3'>
+			<img class="difficultyRadio" src='imgs/none.png' /><br/>
+			<span>SSJ</span>
+			
+			</div>
+			
+			
+			
+			</div>
+			
+						<div id='testt'></div>
+
+			
+			<div onClick="showScreen('previous');saveSettings();" class='gameButton martop'>Back</div>
+
+
+			
+			
+			</div>
+			<div id="game_pause" class='screen'></div>
+			
+			
+			
+			<div id="screen-characters" class='screen'>
+				Pick your character
+				<div>
+					<div></div>
+					<div></div>	
+				</div>	
+				<div></div>
+				<div class='gameButton' data-href='start'>Start</div>
+				
+			</div>
+			
+			<div id="screen-gamemode" class='screen'>
+				<div class='gameButton martop' data-href='1pGame'>Singleplayer</div>
+				<div class='gameButton  inactive martop' data-href='2cGame'>Cooperative</div>
+				<div class='gameButton martop' data-href='2pGame'>Versus</div>
+				<div class='gameButton martop' data-href='menu'>Back</div>				
+			</div>
+			
+			
+			
+			<div id="credits" class='screen'></div>
+			
+			<div id="leaderboards" class='screen'>
+			<div class='informations' id='lead'>
+			<div class='scrollable'></div>
+			</div>
+			<div onClick="showScreen('start_screen');" class='gameButton martop'>Back</div>
+			</div>
+			<div id="versus_search" class='screen'>
+			
+				
+				<div>
+					
+					<div class='loading small'><img src="imgs/DragonBall.png" /><br/>Be patient</div>
+					
+					Waiting for an opponent
+					
+					<div id='versus_resign' class='gameButton martop'>Main menu</div>
+				</div>
+			</div>
+
+			<div id="versus_finish" class='screen'></div>
+			<div id="achievements" class='screen'>
+			
+			<div class='informations'>
+				<div class='scrollable'>
+				
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> New ally
+				</div>
+				<div class="achInfo">
+					Create your account
+				</div>
+				
+				<div class="achievement">
+				
+				
+				
+					<img class="achIco" src='imgs/none.png'/> Training begins
+				</div>
+				<div class="achInfo">
+					Play a singleplayer game
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Super Saiyajin
+				</div>
+				<div class="achInfo">
+					Activate Super Saiyajin mode and keep it for at least 10 seconds
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> A moment for creator
+				</div>
+				<div class="achInfo">
+					Take a look at credits
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Combo master
+				</div>
+				<div class="achInfo">
+					Reach 100 hit combo
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Kame-hame-ha!
+				</div>
+				<div class="achInfo">
+					Use in a match
+				</div>
+							
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Patient fighter
+				</div>
+				<div class="achInfo">
+					Destroy whole row with one hit
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Lucky one
+				</div>
+				<div class="achInfo">
+					Destroy whole column with one hit
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Achievement
+				</div>
+				<div class="achInfo">
+					Tutaj opis tego wyżej
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Achievement
+				</div>
+				<div class="achInfo">
+					Tutaj opis tego wyżej
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Achievement
+				</div>
+				<div class="achInfo">
+					Tutaj opis tego wyżej
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Achievement
+				</div>
+				<div class="achInfo">
+					Tutaj opis tego wyżej
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Achievement
+				</div>
+				<div class="achInfo">
+					Tutaj opis tego wyżej
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Achievement
+				</div>
+				<div class="achInfo">
+					Tutaj opis tego wyżej
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Achievement
+				</div>
+				<div class="achInfo">
+					Tutaj opis tego wyżej
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Achievement
+				</div>
+				<div class="achInfo">
+					Tutaj opis tego wyżej
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Achievement
+				</div>
+				<div class="achInfo">
+					Tutaj opis tego wyżej
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Achievement
+				</div>
+				<div class="achInfo">
+					Tutaj opis tego wyżej
+				</div>
+				
+				<div class="achievement">
+					<img class="achIco" src='imgs/none.png'/> Achievement
+				</div>
+				<div class="achInfo">
+					Tutaj opis tego wyżej
+				</div>
+				
+			</div>
+			</div>
+			
+			<div onClick="showScreen('previous');" class='gameButton martop'>Back</div>
+			</div>
+			
+
+			
+			<div id="sign_in" class='screen'>
+			
+				
+				<form id='form_login'>
+				<input type='text' placeholder='Nick' class='gameButton small' id="login_nick_field"/>
+				<input type='password' placeholder='Password' class='gameButton small' id="login_pass_field"/>
+				<input type='submit' class='gameButton small' value="Sign in"/>
+				<div class="margin" id='remember_me' style='display:inline-block;'>
+				Remember me
+				<div class='slider on' data-val='remember'><img src="imgs/none.png"/></div>
+				</div>
+				</form>
+				
+				<div id="sign_in_sign_up" class='gameButton martop'>Register</div>
+				<div id="sign_in_main_menu" class='gameButton martop'>Main menu</div>
+			
+			</div>
+			
+			<div id="sign_up" class='screen'>
+				<form id='form_register'>
+					<input type='text' placeholder='Nick' class='gameButton small' id="register_nick_field" />
+					<input type='password' placeholder='Password' class='gameButton small' id="register_pass_field" />
+					<input type='text' placeholder='E-mail' class='gameButton small' id="register_mail_field" />
+					<input class="gameButton small" value="Register" type='submit'/>
+				</form>
+				
+				<div id="sign_in_main_menu" class='gameButton martop'>Main menu</div>
+
+			</div>
+			
+			
+			
+			<img src='imgs/small_goku.png' style='z-index:3;position:absolute;right:0px;bottom:0px' id='small_goku'/>
+			
+			<div id="game_finish" class='screen'>
+			<!--<img src="imgs/goku.png" style="width:100px;height:160px;"/>-->
+			<br/>
+			<div id="score_monit">
+			<span style="color:#0099FF" onclick="showScreen('sign_in');">Login</span> to save your score!</div>
+			
+			<div id="match_result">Match result</div>
+			
+			<div id="low_dock">
+			
+			<div id="play_again" class='gameButton martop'>Play again</div>
+			<div id="main_menu" class='gameButton martop'>Main menu</div>
+			
+			</div>
+			</div>
+		</div>
+	</div>
+		
+		
+
+			<div id='preloading' class='loading'><img src="imgs/DragonBall.png" /><br/>Please wait</div>
+			
+
+		
+
+	<div id='arg'></div>
+	
+	
+	<div id='preload'>
+		<img src='imgs/c17.png'/>
+		<img src='imgs/c17_bw.png'/>
+		
+		<img src='imgs/c18.png'/>
+		<img src='imgs/c18_bw.png'/>
+		
+		<img src='imgs/dodorio.png'/>
+		<img src='imgs/dodorio_bw.png'/>
+		
+		<img src='imgs/freezer.png'/>
+		<img src='imgs/freezer_bw.png'/>
+		
+		<img src='imgs/nappa.png'/>
+		<img src='imgs/nappa_bw.png'/>
+		
+		
+		
+		<img src='imgs/background-black.png'/>
+		<img src='imgs/final_goku.png'/>
+		
+		<img src='imgs/goku.png'/>
+		<img src='imgs/goku1.png'/>
+		<img src='imgs/ki.gif'/>
+		
+	
+		
+		<img src='imgs/refresh.png'/>
+		<img src='imgs/s_off.png'/>
+		<img src='imgs/s_on.png'/>
+		<img src='imgs/sensu.gif'/>
+		<img src='imgs/small_goku.png'/>
+		<img src='imgs/none.png'/>
+		
+		
+		
+	</div>
+	
+<!-- Plugins and libraries !--> 
+<script src="js/plugins/jquery-2.1.0/jquery-2.1.0.min.js"></script>
+<script src='js/plugins/fastclick/fastclick.js'></script>
+<script src="js/plugins/transit/transitions.js"></script>
+<script src="js/plugins/rotate/jQueryRotate.js"></script>
+<script src="js/plugins/shake/shake.js"></script>
+<script src="js/plugins/lowLag/lowLag.js"></script>
+<script src="js/plugins/lowLag/soundmanager2.js"></script>
+<!--<script src="js/plugins/rememberState/rememberState.js"></script>-->
+
+<script src="js/plugins/velocity/velocity.js"></script>
+<script src="js/plugins/noUiSlider/jquery.nouislider.min.js"></script>
+
+<!--
+<script src="js/script.js"></script>
+
+-->
+
+<script src="js/initial.js"></script>
+<script src="js/prepare.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/gameplay.js"></script>
+<script src="js/ready.js"></script>
+
+</body>
+
+
