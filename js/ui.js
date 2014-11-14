@@ -24,7 +24,6 @@ function achievement(id,show,emit,interval){
 		// add if sounds
 		playSound('bonus','achievement');
 		monit($('.achievement').eq(id).html());	
-		return false;
 		$('.achievementBar').click(function(){
 			if(gameInProgress==true){pauseGame();}
 			
