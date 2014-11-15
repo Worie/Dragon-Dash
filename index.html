@@ -509,6 +509,9 @@ border-radius:20px;
 margin-top:10px;
 margin-left:10px;
 }
+.achievementBar > img.achIco {
+margin-top:-10px;
+} 
 
 .achInfo{
 display:block;
@@ -655,14 +658,14 @@ margin-bottom:10px;
 				<div id="lead_href" class='gameButton martop' onclick='showScreen("leaderboards");' data-href='leaderboards'>Leaderboards</div>
 				<div id='achievements_menu' class='gameButton martop' data-href='achievements'>Achievements</div>
 
-				<div class='gameButton inactive martop' data-href='about'>About</div>
+				<div class='gameButton martop' data-href='screen-about'>About</div>
 				
 				<!--<div id='credits_game' class='gameButton martop' data-href='credits'>Credits</div>-->
 				<!--<div data-href='settings' class='gameButton martop'>Settings</div>-->
 
 				
 			</div>
-			<!--> //////////////////////////////////////////////////////SETTINGS///////////<-->
+			<!--//////////////////////////////////////////////////////SETTINGS///////////-->
 			<div id="settings" class='screen'>
 			<div style='display:inline-block;width:80%;'>
 			
@@ -748,6 +751,18 @@ margin-bottom:10px;
 				
 			</div>
 			
+
+
+			<div id="screen-about" class='screen'>
+				<div class="gameButton inactive martop" data-href="about-howto">How to play</div>
+				<div class="gameButton inactive martop" data-href="about-credits">Credits</div>
+				<div class='gameButton martop' data-href='menu'>Back</div>				
+
+			</div>
+
+			<div id="about-howto" class="screen"></div>
+			<div id="about-credits" class="screen"></div>
+
 			<div id="screen-gamemode" class='screen'>
 				<div class='gameButton martop' data-href='1pGame'>Singleplayer</div>
 				<div class='gameButton  inactive martop' data-href='2cGame'>Cooperative</div>
