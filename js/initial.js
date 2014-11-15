@@ -1,6 +1,30 @@
 ﻿
-skills=[];
+
 characters = ['goku','krilin','tien']; //'fireza','vegeta','cell','kidbuu'
+
+skills = {
+
+	goku: { 
+		up:'genkidama',
+		right:'kaioken',
+		down:'kamehameha',
+		left:'ssj'
+	},
+	krilin:{
+		up:'taioken',
+		right:'dyski',
+		down:'kamehameha',
+		left:'dyski'
+	},
+	tien: {
+		up:'taioken',
+		right:'kwadracik',
+		down:'dodonray',
+		left:'4h'
+	}
+};
+//skills['frezia']=['','kaioken','kamehameha','ssj'];
+
 playerCharacter = "";
 
 ssj = false;
