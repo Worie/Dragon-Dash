@@ -91,8 +91,8 @@ function checkIfCorrect(e){
 		$('.tile').each(function(){
 			
 			$(this)
-			.velocity('stop',true)
-			.velocity('stop',true)
+			//.velocity('stop',true)
+			//.velocity('stop',true)
 			.stop(true,false)
 			.stop(true,false)
 			.clearQueue()
@@ -162,6 +162,7 @@ function checkIfCorrect(e){
 		comboExtend();
 		if(combo>highest_combo){highest_combo=combo;}
 		combo++;
+		if(combo==100){achievement(4);}
 		
 		
 		
@@ -230,7 +231,7 @@ function checkIfCorrect(e){
 				//delay this with wait
 				$(this).delay(wait).queue(function(){
 				$(this).Up();
-			if(sensu_time>20){
+			if(sensu_time>50){
 				$(this).Randomize('sensu');
 				sensu_time=0;
 				}else{
@@ -246,9 +247,14 @@ function checkIfCorrect(e){
 				var Delay = (wait+(d*100)),Duration = 100;
 				if(settings.animations!==true){Duration=0;Delay=0;}
 				// delay this with (wait+(d*100))
-				$(this).velocity({
+				/*$(this).velocity({
 				top: distance
 				},{duration: Duration,delay: Delay}).promise().done(function(){	
+				*/
+
+				$(this).delay(Delay).animate({
+				top: distance
+				},Duration).promise().done(function(){	
 
 				playSound('tiles','tick');
 				});
@@ -263,10 +269,15 @@ function checkIfCorrect(e){
 				var Delay = (wait+(d*100)),Duration = 100;
 				if(settings.animations!==true){Duration=0;Delay=0;}
 			//delay this with wait
+			/*
 			$(this).velocity({
 				top: distance
 			},{duration: 100,delay:wait});
-		
+			*/
+			$(this).delay(wait).animate({
+				top: distance
+			},100);
+
 		}).promise().done(function(){
 		// triggered once animation is finished
 		animation_done=true;
@@ -328,16 +339,23 @@ function checkIfCorrect(e){
 	}else{
 	if(mode=='sensu'){
 
-		time+=getRandomInt(3,10);
+		time+=getRandomInt(20,30);
 		playSound('bonus','crunch');
 		$(e).attr('affected',1);
 		setAnimation(parseInt(e.style.left)/size);
 		
 	
-		$(e).Up().velocity({
+		/*$(e).Up().velocity({
+			top: size/2+"px"
+			}
+		,100);*/
+
+
+		$(e).Up().animate({
 			top: size/2+"px"
 			}
 		,100);
+
 		$(e).Randomize();
 		
 		$(".tile[affected=2]").each(function(){
@@ -346,10 +364,15 @@ function checkIfCorrect(e){
 	
 		
 	
-	$(this).velocity({
+	/*$(this).velocity({
 		top: distance
-	},100);
+	},100);*/
 	
+
+	$(this).animate({
+				top: distance
+	},100);
+
 	});
 
 	$('#ki_info').html('Senzu!');
@@ -496,9 +519,9 @@ var f_draw = function draw(){
 	var to=tmp*size+(size/2)+'px';
 	var tmp2= parseInt($(this).css('left'))/size;
 	// delay(((8-tmp)*70+(tmp2*70)))
-	$(this).velocity({
+	$(this).delay(((8-tmp)*70+(tmp2*70))).animate({
 	top: to
-	},{duration: 70,delay:(((8-tmp)*70+(tmp2*70)))}).promise().done(function(){});
+	},70).promise().done(function(){});
 	});
 	$('.tile').removeAttr('place');
 	}
@@ -663,7 +686,7 @@ function gameStart(type){
 								  swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 								  	//alert("You swiped " + direction + " with " + fingerCount + " fingers");
 									if(combo>10){
-																			
+										useSkill(direction);									
 									}
 								  },
 								  threshold:size/2,
