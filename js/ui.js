@@ -333,6 +333,7 @@ function gameButtonAction(v){
 		$('#settings_icon').hide();} break;
 	case '2pGame' : gameType='versus';gameButtonAction('characters'); break;
 	case 'menu' : showScreen('start_screen');break;
+	default: showScreen(v); break;
 	}
 		
 			
