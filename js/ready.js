@@ -433,7 +433,7 @@ replaceClassProp('avatar','margin-left',size/10+'px');
 	$('#sign_in_sign_up').on('click',function(){showScreen('sign_up'); return false;});
 	
 	$('#ki_bar').css('font-size',size/2+'px');
-	$('.gameButton').each(function(){
+	$('.gameButton:not(.inactive)[data-href]').each(function(){
 	
 	// theres probably better way to to it with obj.click(fun) handler.
 	$(this).on('click',function(){
