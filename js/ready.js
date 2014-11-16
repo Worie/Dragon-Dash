@@ -166,6 +166,30 @@ skills :
 
 
 $(document).ready(function(){
+
+
+		
+
+	$('body').on("touchmove", function(event){
+    	event.preventDefault();
+	});
+
+	$('.scrollable').on("touchmove",function(event){
+		event.stopPropagation();
+	/*	d=$(this).scrollTop();
+		console.log(d+'s'+lastScroll);
+
+			if((this.scrollHeight - this.clientHeight)==d){event.preventDefault();
+				console.log(this.scrollHeight - this.clientHeight+';'+d);
+			}
+
+
+
+		lastScroll=d;*/
+	});
+
+	
+
 	var tilesX = X,tilesY=Y;
 	
 	Oldies=false;
@@ -523,6 +547,7 @@ replaceClassProp('avatar','margin-left',size/10+'px');
 	}
 	}
 	});
+
 });
 
 
