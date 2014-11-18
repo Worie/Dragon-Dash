@@ -26,6 +26,7 @@ function startIntervals(){
 }
 
 function pauseGame(){
+	if(gameInProgress==false){return false;}
 	$('#refresh_tiles').hide();
 	var t= tiles;
 	$('#pause_btn').hide();
@@ -193,7 +194,7 @@ function checkIfCorrect(e){
 		// End of the for that counts ammount of hit tiles in Column
 		
 		if(Object.keys(hitsInCol).length==7 && typeof achievements[6]=== 'undefined'){achievement(6,true,false);}
-		
+		// dodaj jeden warunek , jesli jest jednen wiersz pelen
 		// It is setAnimation() for all rows ... 
 		if(settings.animations==true){
 		boardFall();

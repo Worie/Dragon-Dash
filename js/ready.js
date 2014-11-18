@@ -516,38 +516,41 @@ replaceClassProp('avatar','margin-left',size/10+'px');
 					
 
 			}
-		else{
-		}
+		
+		else if(code==112){ pauseGame();}
+		//else if(){}
+
+		console.log(code);
 	});
 		
 		
 		$('#refresh_tiles').on('click',function(){
-		if(gameInProgress && !game_paused){
-	if(settings.sounds.shuffle===true)lowLag.play('refresh');
+			if(gameInProgress && !game_paused){
+				if(settings.sounds.shuffle===true)lowLag.play('refresh');
 	
-	if(settings.animations===true){
-		$('#refresh_tiles').hide();
-		tiles.each(function(){
-		var tmp = this;
-		setTimeout(function(){
-		$(tmp).transition({
-		rotateY: '360deg'
-		},100).transition({rotateY:'0deg'});
-		$(tmp).Randomize();
-		},getRandomInt(50,300));
+				if(settings.animations===true){
+					if(refreshing==true){return false;}
+					$('#refresh_tiles').hide();
+					refreshing=true;
+					tiles.each(function(){
+					var tmp = this;
+					
+					setTimeout(function(){
+						$(tmp).transition({
+							rotateY: '360deg'
+						},100).transition({rotateY:'0deg'});
+						$(tmp).Randomize();
+					},getRandomInt(50,300));
 		
-		setTimeout(function(){$('#refresh_tiles').show();},400);
-		}
-		);
-	}else{
-		tiles.each(function(){
-		$(this).Randomize();
+					setTimeout(function(){$('#refresh_tiles').show();refreshing=false;},400);
+					});
+				}else{
+					tiles.each(function(){
+						$(this).Randomize();
+					});
+				}
+			}
 		});
-
-	}
-	}
-	});
-
 });
 
 

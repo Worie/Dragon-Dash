@@ -1,5 +1,5 @@
 ﻿
-
+refreshing = false;
 characters = ['goku','krilin','tien']; //'fireza','vegeta','cell','kidbuu'
 
 skills = {

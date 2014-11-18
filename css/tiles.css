@@ -1,0 +1,62 @@
+
+.sensu {
+background-image:url('../imgs/tiles/sensu.gif');	
+}
+	
+.tile:hover{
+cursor:pointer;
+}
+
+.freezer {
+background-image:url('../imgs/tiles/freezer.png');
+}
+
+.freezer.bw {
+background-image:url('../imgs/tiles/freezer_bw.png');
+}
+
+.cell {
+background-image:url('../imgs/tiles/cell.png');	
+}
+
+.cell.bw {
+	background-image:url('../imgs/tiles/cell_bw.png');		
+}
+
+.c17 {
+background-image:url('../imgs/tiles/c17.png');
+}
+
+.c17.bw {
+background-image:url('../imgs/tiles/c17_bw.png');
+}
+
+.nappa {
+background-image:url('../imgs/tiles/nappa.png');
+	}
+	
+.nappa.bw {
+	background-image:url('../imgs/tiles/nappa_bw.png');
+	
+	}
+.c18 {
+background-image:url('../imgs/tiles/c18.png');
+}
+
+.c18.bw {
+background-image:url('../imgs/tiles/c18_bw.png');
+}
+
+.dodorio{
+background-image:url('../imgs/tiles/dodorio.png');
+}
+
+.dodorio.bw{
+background-image:url('../imgs/tiles/dodorio_bw.png');
+}
+
+
+.white {
+
+background-image:url('../imgs/tiles/white.png');
+}
